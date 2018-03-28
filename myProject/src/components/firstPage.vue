@@ -24,7 +24,8 @@
             </li>
           </ol>
       </div>
-      <componentDemo />
+      <componentDemo v-if="type" v-bind:todo="msg"/>
+      <componentDemo v-if="type==false" v-bind:todo="message"/>
     </div>
 </template>
 
@@ -34,6 +35,7 @@ export default {
   name: 'FirstPage',
   data () {
     return {
+      type:true,
       msg: '',
       rawHtml:"<h1>hello world</h1>",
       message:new Date(),
@@ -49,7 +51,9 @@ export default {
   methods:{
     doBtn:function(){
       this.seen=!this.seen
-      this.isActive=!this.isActives
+      this.isActive=!this.isActive
+      this.type=!this.type
+      // console.log(this.type)
     },   
 },
 components: {
